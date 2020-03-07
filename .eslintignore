@@ -1,4 +1,5 @@
 
 index.js
 setupTests.js
+./src/app/utils/dataNormalizer.js
 /config
