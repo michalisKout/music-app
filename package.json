@@ -45,6 +45,7 @@
     "postcss-normalize": "8.0.1",
     "postcss-preset-env": "6.7.0",
     "postcss-safe-parser": "4.0.1",
+    "prop-types": "^15.7.2",
     "react": "^16.13.0",
     "react-app-polyfill": "^1.0.6",
     "react-dev-utils": "^10.2.0",
@@ -85,6 +86,14 @@
     ]
   },
   "devDependencies": {
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
     "redux-devtools": "^3.5.0"
   },
   "jest": {
@@ -141,5 +150,11 @@
     "presets": [
       "react-app"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
   }
 }

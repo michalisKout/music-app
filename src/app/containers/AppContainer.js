@@ -1,19 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import App from '../components/MusicApp';
 
-export class AppContainer extends Component {
-	static propTypes = {
-		prop: PropTypes
-	};
-
-	render() {
-		return <div></div>;
-	}
-}
-
-const mapStateToProps = state => ({});
+const mapStateToProps = (state = {}) => ({ ...state });
 
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
