@@ -1,0 +1,59 @@
+{
+  "artists": [
+    {
+      "id": "1",
+      "name": "Fred Ji"
+    },
+    {
+      "id": "2",
+      "name": "Diviners"
+    },
+    {
+      "id": "3",
+      "name": "AWN"
+    }
+  ],
+  "albums": [
+    {
+      "tracks": [
+        {
+          "id": "1xVxk0hy9mklLKP2iqKvhF7e7zZPqBm0m",
+          "title": "Flying High",
+          "cover_url": "http://placeimg.com/200/200/track"
+        },
+        {
+          "id": "1xNCQ-rpE2kvdO2hTYK17U1lqvuTwrQ5F",
+          "title": "Tropic Love",
+          "cover_url": "http://placeimg.com/200/200/track"
+        }
+      ],
+      "id": "1",
+      "title": "Heavy Light",
+      "cover_url": "http://placeimg.com/200/200/music"
+    },
+    {
+      "tracks": [
+        {
+          "id": "1bylTpnEzZGNUTwcRrMlw55nG103TfbeP",
+          "title": "We Know",
+          "cover_url": "http://placeimg.com/200/200/track"
+        }
+      ],
+      "id": "2",
+      "title": "Out of My Province",
+      "cover_url": "http://placeimg.com/200/200/music"
+    },
+    {
+      "tracks": [
+        {
+          "id": "1xNCQ-rpE2kvdO2hTYK17U1lqvuTwrQ5F",
+          "title": "Tropic Love",
+          "cover_url": "http://placeimg.com/200/200/track"
+        }
+      ],
+      "id": "3",
+      "title": "Superstar",
+      "cover_url": "http://placeimg.com/200/200/music"
+    }
+  ]
+}
