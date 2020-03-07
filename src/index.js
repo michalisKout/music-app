@@ -4,7 +4,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import './index.scss';
 import MusicApp from './app/components/MusicApp';
-import rootReducer from './reducers/index';
+import rootReducer from './app/reducers/index';
 
 import './index.scss';
 
