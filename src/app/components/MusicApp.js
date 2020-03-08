@@ -1,11 +1,14 @@
 import React from 'react';
-import AlbumsContainer from '../containers/AlbumsContainer';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Routes from './Routes';
 
 const MusicApp = () => {
   return (
     <div className="music-app__container">
       <div>Music App</div>
-      <AlbumsContainer />
+      <Router>
+        <Routes />
+      </Router>
     </div>
   );
 };
