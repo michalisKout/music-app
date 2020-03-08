@@ -54,6 +54,7 @@
     "react-dev-utils": "^10.2.0",
     "react-dom": "^16.13.0",
     "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
     "redux": "^4.0.5",
     "resolve": "1.15.0",
     "resolve-url-loader": "3.1.1",
@@ -160,5 +161,12 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint",
+      "pretty-quick — staged",
+      "git add"
+    ]
   }
 }
