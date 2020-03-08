@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { CoverImage } from './commonComponents/CoverImage';
+import { Title } from './commonComponents/Title';
 
 const Album = ({ album }) => {
   const { title, id, coverUrl } = album;
@@ -7,8 +9,8 @@ const Album = ({ album }) => {
   return (
     <li>
       <Link to={{ pathname: `/albums/${id}`, state: { albumId: id } }}>
-        <img src={`${coverUrl}`} alt="album-cover" />
-        <h3>{title}</h3>
+        <CoverImage coverUrl={coverUrl} />
+        <Title text={title} />
       </Link>
     </li>
   );
