@@ -1,11 +1,5 @@
 import { normalize, schema } from 'normalizr';
-
-const SERVER_URL = 'http://localhost:5500';
-const DATA_TYPES = {
-  ALBUMS: 'albums',
-  ARTISTS: 'artists',
-  TRACKS: 'tracks'
-};
+import { DATA_TYPES, SERVER_URL } from '../utils/config';
 
 export const createDataSchema = (data, entity) => {
   return normalize(data, [entity]);
