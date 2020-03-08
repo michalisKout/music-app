@@ -12,7 +12,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.track-list {
+  margin-top: 2em;
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.track {
+  &__title {
+    text-align: center;
+  }
+}
+.album {
+  &__info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 2em;
+    border-bottom: 2px solid $blue;
+    width: 50%;
+    margin: auto;
+  }
+}
 .music-app {
   text-align: center;
 }
