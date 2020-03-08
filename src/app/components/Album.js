@@ -1,11 +1,12 @@
 import React from 'react';
 
 const Album = ({ album }) => {
+  const { title, id, coverUrl, tracks } = album;
+
   return (
-    <li>
-      <img src={`${album.cover_url}`} alt="album-cover" />
-      <div>{album.title}</div>
-    </li>
+    <div key={id}>
+      This is the album {title} image : {coverUrl} and tracks : {tracks}
+    </div>
   );
 };
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import AlbumContainer from '../containers/AlbumContainer';
+import AlbumLinkContainer from '../containers/AlbumLinkContainer';
 
 const Albums = ({ albumIds }) => {
   return (
     <ul>
       {albumIds.map(albumId => {
-        return <AlbumContainer key={albumId} albumId={albumId} />;
+        return <AlbumLinkContainer key={albumId} albumId={albumId} />;
       })}
     </ul>
   );
