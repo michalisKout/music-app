@@ -1,9 +1,13 @@
 import React from 'react';
+import AlbumsContainer from '../containers/AlbumsContainer';
 
 const MusicApp = () => {
-  return <div>Music App</div>;
+  return (
+    <div className="music-app__container">
+      <div>Music App</div>
+      <AlbumsContainer />
+    </div>
+  );
 };
-
-MusicApp.propTypes = {};
 
 export default MusicApp;
