@@ -23,3 +23,23 @@ ul {
     list-style: none;
   }
 }
+
+.music-player {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  background: #333;
+  position: fixed;
+  bottom: 0;
+
+  &__button {
+    color: #fff;
+    padding: 1em;
+    cursor: pointer;
+  }
+
+  .active {
+    color: red;
+  }
+}
