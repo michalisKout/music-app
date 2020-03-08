@@ -8,7 +8,7 @@ const Album = ({ album }) => {
     <li>
       <Link to={{ pathname: `/albums/${id}`, state: { albumId: id } }}>
         <img src={`${coverUrl}`} alt="album-cover" />
-        <div>{title}</div>
+        <h3>{title}</h3>
       </Link>
     </li>
   );
