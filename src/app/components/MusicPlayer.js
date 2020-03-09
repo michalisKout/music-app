@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { isEqual } from 'lodash';
 
 const MOCK_AUDIO_FILE_ID = '1xVxk0hy9mklLKP2iqKvhF7e7zZPqBm0m';
 const escapeGoogleAuth = (fileId = MOCK_AUDIO_FILE_ID) =>
@@ -9,36 +10,42 @@ class MusicPlayer extends Component {
     super(props);
     this.musicPlayer = null;
     this.state = {
-      isPlaying: false,
-      isPaused: false
+      isPlaying: false
     };
   }
 
-  componentDidMount() {
-    if (this.musicPlayer) {
-      // this.musicPlayer.play();
+  componentDidUpdate(prevProps) {
+    if (!isEqual(this.props.track, prevProps.track)) {
+      this.musicPlayer.play();
+      this.setState({ isPlaying: true });
     }
   }
 
   render() {
-    const { isPaused, isPlaying } = this.state;
+    const { isPlaying } = this.state;
+    const { track } = this.props;
     return (
       <div className="App music-player">
-        <header className="App-header">
-          <audio
-            ref={el => {
-              this.musicPlayer = el;
-            }}
-            id="musicPlayer"
-            src={escapeGoogleAuth()}
-          />
-        </header>
+        <audio
+          ref={el => {
+            this.musicPlayer = el;
+          }}
+          id="musicPlayer"
+          src={escapeGoogleAuth(track && track.id)}
+        />
+        <span
+          className="music-player__button"
+          onClick={() => {
+            this.musicPlayer.src = escapeGoogleAuth();
+          }}
+        >
+          Previous
+        </span>
         <span
           className={`music-player__button ${isPlaying ? 'active' : ''}`}
           onClick={() => {
             this.setState(prevState => ({
               ...prevState,
-              isPaused: false,
               isPlaying: true
             }));
             this.musicPlayer.play();
@@ -46,12 +53,14 @@ class MusicPlayer extends Component {
         >
           Play
         </span>
+        <span className="music-player__header">
+          Song Playing: {track ? track.title : '---'}
+        </span>
         <span
-          className={`music-player__button ${isPaused ? 'active' : ''}`}
+          className={`music-player__button ${isPlaying ? '' : 'active'}`}
           onClick={() => {
             this.setState(prevState => ({
               ...prevState,
-              isPaused: true,
               isPlaying: false
             }));
             this.musicPlayer.pause();
@@ -59,16 +68,9 @@ class MusicPlayer extends Component {
         >
           Pause
         </span>
-        <span
-          className="music-player__button"
-          onClick={() => {
-            this.musicPlayer.src = escapeGoogleAuth();
-          }}
-        >
-          Next
-        </span>
+
         <span className="music-player__button" onClick={() => {}}>
-          Previous
+          Next
         </span>
       </div>
     );
