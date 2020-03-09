@@ -119,7 +119,7 @@ class MusicPlayer extends Component {
 MusicPlayer.propType = {
   track: PropTypes.shape({
     title: PropTypes.string,
-    id: PropTypes.number,
+    id: PropTypes.string,
     coverUrl: PropTypes.string
   })
 };

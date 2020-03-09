@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { CoverImage } from './commonComponents/CoverImage';
 import { Title } from './commonComponents/Title';
 
-const Album = ({ album }) => {
+const AlbumLink = ({ album }) => {
   const { title, id, coverUrl } = album;
 
   return (
@@ -16,4 +17,13 @@ const Album = ({ album }) => {
   );
 };
 
-export default Album;
+AlbumLink.propTypes = {
+  album: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    coverUrl: PropTypes.string.isRequired,
+    tracks: PropTypes.arrayOf(PropTypes.string)
+  })
+};
+
+export default AlbumLink;

@@ -12,7 +12,7 @@ const SongTitle = ({ track, cssClass }) => {
 SongTitle.propTypes = {
   track: PropTypes.shape({
     title: PropTypes.string,
-    id: PropTypes.number,
+    id: PropTypes.string,
     coverUrl: PropTypes.string
   })
 };

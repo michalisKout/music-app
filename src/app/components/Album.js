@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { CoverImage } from './commonComponents/CoverImage';
 import { Title } from './commonComponents/Title';
 import TrackContainer from '../containers/TrackContainer';
@@ -19,6 +20,15 @@ const Album = ({ album }) => {
       <ul className="track-list">{trackList}</ul>
     </div>
   );
+};
+
+Album.propTypes = {
+  album: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    coverUrl: PropTypes.string.isRequired,
+    tracks: PropTypes.arrayOf(PropTypes.string).isRequired
+  })
 };
 
 export default Album;

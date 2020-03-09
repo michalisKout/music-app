@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AlbumLinkContainer from '../containers/AlbumLinkContainer';
 
 const Albums = ({ albumIds }) => {
@@ -9,6 +10,10 @@ const Albums = ({ albumIds }) => {
       })}
     </ul>
   );
+};
+
+Albums.propTypes = {
+  albumIds: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default Albums;

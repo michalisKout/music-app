@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { CoverImage } from './commonComponents/CoverImage';
 import { Title } from './commonComponents/Title';
 
@@ -15,6 +16,15 @@ const Track = ({ track, playTrack }) => {
       <Title cssClass="track__title" text={title} />
     </li>
   );
+};
+
+Track.propTypes = {
+  track: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    coverUrl: PropTypes.string.isRequired
+  }),
+  playTrack: PropTypes.func.isRequired
 };
 
 export default Track;
