@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { isEqual, debounce, throttle } from 'lodash';
 import PlayerButton from './PlayerButton';
+import SongTitle from './SongTitle';
 
 const escapeGoogleAuth = (fileId = '') =>
   fileId && `https://docs.google.com/uc?export=download&id=${fileId}`;
@@ -33,6 +35,7 @@ class MusicPlayer extends Component {
       this.progressBar.value = currentProgress;
     }
   }
+
   componentDidMount() {
     const calculateProgress = () => {
       const { currentTime, duration } = this.musicPlayer;
@@ -99,9 +102,7 @@ class MusicPlayer extends Component {
           cssClass={`music-player__button ${shouldActivate(!isPlaying)}`}
           handler={throttle(this.handleAudioPause, 100)}
         />
-        <span className="music-player__header">
-          Song Playing: {track ? track.title : '---'}
-        </span>
+        <SongTitle track={track} cssClass={'music-player__song-title'} />
         <progress
           ref={el => {
             this.progressBar = el;
@@ -114,4 +115,13 @@ class MusicPlayer extends Component {
     );
   }
 }
+
+MusicPlayer.propType = {
+  track: PropTypes.shape({
+    title: PropTypes.string,
+    id: PropTypes.number,
+    coverUrl: PropTypes.string
+  })
+};
+
 export default React.memo(MusicPlayer);
