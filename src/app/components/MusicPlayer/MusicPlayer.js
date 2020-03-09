@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { isEqual, debounce } from 'lodash';
+import { isEqual, debounce, throttle } from 'lodash';
+import PlayerButton from './PlayerButton';
 
 const escapeGoogleAuth = (fileId = '') =>
   fileId && `https://docs.google.com/uc?export=download&id=${fileId}`;
@@ -7,6 +8,7 @@ const escapeGoogleAuth = (fileId = '') =>
 const UPDATE_TIME_EVENT = 'timeupdate';
 const WAIT_TIME = 500;
 const debouchConfig = { maxWait: 1500 };
+
 class MusicPlayer extends Component {
   constructor(props) {
     super(props);
@@ -75,6 +77,8 @@ class MusicPlayer extends Component {
   render() {
     const { isPlaying } = this.state;
     const { track } = this.props;
+    const shouldActivate = isActive => (isActive ? 'active' : '');
+
     return (
       <div className="App music-player">
         <audio
@@ -84,26 +88,17 @@ class MusicPlayer extends Component {
           id="musicPlayer"
           src={escapeGoogleAuth(track && track.id)}
         />
-        <span
-          className="music-player__button"
-          onClick={() => {
-            this.musicPlayer.src = escapeGoogleAuth();
-          }}
-        >
-          《
-        </span>
-        <span
-          className={`music-player__button ${isPlaying ? 'active' : ''}`}
-          onClick={this.handleAudioPlay}
-        >
-          ►
-        </span>
-        <span
-          className={`music-player__button ${isPlaying ? '' : 'active'}`}
-          onClick={this.handleAudioPause}
-        >
-          ∥∥
-        </span>
+        <PlayerButton content={'《'} cssClass={'music-player__button'} />
+        <PlayerButton
+          content={'►'}
+          cssClass={`music-player__button ${shouldActivate(isPlaying)}`}
+          handler={throttle(this.handleAudioPlay, 100)}
+        />
+        <PlayerButton
+          content={'∥∥'}
+          cssClass={`music-player__button ${shouldActivate(!isPlaying)}`}
+          handler={throttle(this.handleAudioPause, 100)}
+        />
         <span className="music-player__header">
           Song Playing: {track ? track.title : '---'}
         </span>
@@ -114,11 +109,9 @@ class MusicPlayer extends Component {
           value="0"
           max="1"
         ></progress>
-        <span className="music-player__button" onClick={() => {}}>
-          》
-        </span>
+        <PlayerButton content={'》'} cssClass={'music-player__button'} />
       </div>
     );
   }
 }
-export default MusicPlayer;
+export default React.memo(MusicPlayer);
