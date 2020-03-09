@@ -1,13 +1,13 @@
 import React from 'react';
 import { CoverImage } from './commonComponents/CoverImage';
 import { Title } from './commonComponents/Title';
-import TracksContainer from '../containers/TracksContainer';
+import TrackContainer from '../containers/TrackContainer';
 
 const Album = ({ album }) => {
   const { title, id, coverUrl, tracks } = album;
   const trackIds = tracks;
   const trackList = trackIds.map(trackId => (
-    <TracksContainer key={trackId} trackId={trackId} />
+    <TrackContainer key={trackId} trackId={trackId} />
   ));
 
   return (
