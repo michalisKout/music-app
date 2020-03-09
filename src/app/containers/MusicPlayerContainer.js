@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import MusicPlayer from '../components/MusicPlayer';
+import MusicPlayer from '../components/MusicPlayer/MusicPlayer';
 
 const mapStateToProps = (state = {}) => {
   const trackId = state.playerConfig.trackId;

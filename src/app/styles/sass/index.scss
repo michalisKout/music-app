@@ -12,6 +12,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+progress {
+  margin-top: auto;
+  margin-bottom: auto;
+}
 .track-list {
   margin-top: 2em;
   display: flex;
@@ -85,7 +89,7 @@ ul {
   width: 100%;
   text-align: center;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   background: $blue;
   position: fixed;
   bottom: 0;
