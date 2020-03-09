@@ -15,4 +15,4 @@ PlayerButton.propTypes = {
   handler: PropTypes.func
 };
 
-export default PlayerButton;
+export default React.memo(PlayerButton);

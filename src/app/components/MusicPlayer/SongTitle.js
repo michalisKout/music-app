@@ -17,4 +17,4 @@ SongTitle.propTypes = {
   })
 };
 
-export default SongTitle;
+export default React.memo(SongTitle);

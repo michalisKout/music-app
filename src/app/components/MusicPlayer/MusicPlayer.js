@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import { isEqual, debounce, throttle } from 'lodash';
 import PlayerButton from './PlayerButton';
 import SongTitle from './SongTitle';
-
-const escapeGoogleAuth = (fileId = '') =>
-  fileId && `https://docs.google.com/uc?export=download&id=${fileId}`;
+import { escapeGoogleAuthUrl, shouldActivate } from '../../utils/helpers';
 
 const UPDATE_TIME_EVENT = 'timeupdate';
 const WAIT_TIME = 500;
@@ -80,16 +78,15 @@ class MusicPlayer extends Component {
   render() {
     const { isPlaying } = this.state;
     const { track } = this.props;
-    const shouldActivate = isActive => (isActive ? 'active' : '');
 
     return (
-      <div className="App music-player">
+      <div className="music-player">
         <audio
           ref={el => {
             this.musicPlayer = el;
           }}
           id="musicPlayer"
-          src={escapeGoogleAuth(track && track.id)}
+          src={escapeGoogleAuthUrl(track && track.id)}
         />
         <PlayerButton content={'《'} cssClass={'music-player__button'} />
         <PlayerButton
