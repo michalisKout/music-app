@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './Routes';
-import MusicPlayer from './MusicPlayer';
+import MusicPlayerContainer from '../containers/MusicPlayerContainer';
 
 const MusicApp = () => {
   return (
@@ -10,7 +10,7 @@ const MusicApp = () => {
       <Router>
         <Routes />
       </Router>
-      <MusicPlayer />
+      <MusicPlayerContainer />
     </div>
   );
 };
