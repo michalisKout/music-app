@@ -23,6 +23,16 @@ code {
     cursor: pointer;
     list-style: none;
     background: $blue;
+
+    &:hover {
+      img {
+        opacity: 0.5;
+      }
+      z-index: 1;
+      background-image: url('../images/play-icon.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
   }
 }
 
