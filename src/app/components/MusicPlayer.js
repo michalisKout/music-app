@@ -76,5 +76,4 @@ class MusicPlayer extends Component {
     );
   }
 }
-
 export default MusicPlayer;
