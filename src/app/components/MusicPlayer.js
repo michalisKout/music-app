@@ -39,7 +39,7 @@ class MusicPlayer extends Component {
             this.musicPlayer.src = escapeGoogleAuth();
           }}
         >
-          Previous
+          《
         </span>
         <span
           className={`music-player__button ${isPlaying ? 'active' : ''}`}
@@ -51,10 +51,7 @@ class MusicPlayer extends Component {
             this.musicPlayer.play();
           }}
         >
-          Play
-        </span>
-        <span className="music-player__header">
-          Song Playing: {track ? track.title : '---'}
+          ►
         </span>
         <span
           className={`music-player__button ${isPlaying ? '' : 'active'}`}
@@ -66,11 +63,13 @@ class MusicPlayer extends Component {
             this.musicPlayer.pause();
           }}
         >
-          Pause
+          ∥∥
         </span>
-
+        <span className="music-player__header">
+          Song Playing: {track ? track.title : '---'}
+        </span>
         <span className="music-player__button" onClick={() => {}}>
-          Next
+          》
         </span>
       </div>
     );
