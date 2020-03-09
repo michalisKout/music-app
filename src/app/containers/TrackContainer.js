@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import Track from '../components/Tack';
+import { playTrack } from '../actions/index';
+import Track from '../components/Track';
 
 const mapStateToProps = (state, ownProps) => {
   const { trackId } = ownProps;
@@ -9,6 +10,6 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { playTrack };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Track);
