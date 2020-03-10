@@ -100,18 +100,13 @@ class MusicPlayer extends Component {
     this.interactWithAudioSafely(shouldPlayAudio);
   }
 
-  getPrevTrack() {
-    const { track, trackIds } = this.props;
-    const currentTrackPosition = trackIds.indexOf(track.id);
+  getPrevTrack(currentTrackPosition) {
     return currentTrackPosition === 0
       ? trackIds.length - 1
       : currentTrackPosition - 1;
   }
 
-  getNextTrackPos() {
-    const { track, trackIds } = this.props;
-    const currentTrackPosition = trackIds.indexOf(track.id);
-
+  getNextTrackPos(currentTrackPosition) {
     return currentTrackPosition === trackIds.length - 1
       ? 0
       : currentTrackPosition + 1;
@@ -119,8 +114,10 @@ class MusicPlayer extends Component {
 
   handleTrack(positionHandler) {
     const { track, playTrack, trackIds } = this.props;
+
     if (track) {
-      const pos = positionHandler();
+      const currentTrackPosition = trackIds.indexOf(track.id);
+      const pos = positionHandler(currentTrackPosition);
       const tackIdToPlay = trackIds[pos];
 
       tackIdToPlay && playTrack(tackIdToPlay);
