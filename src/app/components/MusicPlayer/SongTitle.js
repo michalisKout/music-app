@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SongTitle = ({ track, cssClass, loading }) => {
-  const shouldShowSongTitle = loading
-    ? 'Track is loading...'
-    : `Song Playing: ${track ? track.title : '---'}`;
+  const title = track ? `Song Playing: ${track.title}` : 'Select Track';
+  const shouldShowSongTitle = loading ? 'Track is loading...' : title;
 
   return <span className={cssClass}>{shouldShowSongTitle}</span>;
 };
