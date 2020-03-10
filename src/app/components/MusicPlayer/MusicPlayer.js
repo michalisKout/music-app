@@ -14,6 +14,7 @@ import {
   debouchConfig,
   UPDATE_TIME_EVENT
 } from '../../utils/config';
+import fp from 'lodash/fp';
 
 const PLAYER_BTN_CSS_CLASS = 'music-player__button';
 
@@ -25,8 +26,10 @@ class MusicPlayer extends Component {
 
     this.handleAudio = this.handleAudio.bind(this);
     this.calculateProgress = this.calculateProgress.bind(this);
+    this.changeTrack = this.changeTrack.bind(this);
     this.getPrevTrack = this.getPrevTrack.bind(this);
-    this.getNextTrackPos = this.getNextTrackPos.bind(this);
+    this.getNextTrack = this.getNextTrack.bind(this);
+    this.getTrackPositionData = this.getTrackPositionData.bind(this);
 
     this.state = {
       isPlaying: false,
@@ -100,33 +103,44 @@ class MusicPlayer extends Component {
     this.interactWithAudioSafely(shouldPlayAudio);
   }
 
-  getPrevTrack(currentTrackPosition) {
-    return currentTrackPosition === 0
-      ? trackIds.length - 1
-      : currentTrackPosition - 1;
+  getPrevTrack(positionData) {
+    const { current, trackIds } = positionData;
+    const previousPos = current === 0 ? trackIds.length - 1 : current - 1;
+
+    return { ...positionData, current: previousPos };
   }
 
-  getNextTrackPos(currentTrackPosition) {
-    return currentTrackPosition === trackIds.length - 1
-      ? 0
-      : currentTrackPosition + 1;
+  getNextTrack(positionData) {
+    const { current, trackIds } = positionData;
+
+    const nextPos = current === trackIds.length - 1 ? 0 : current + 1;
+
+    return { ...positionData, current: nextPos };
   }
 
-  handleTrack(positionHandler) {
+  changeTrack(positionData) {
     const { track, playTrack, trackIds } = this.props;
 
     if (track) {
-      const currentTrackPosition = trackIds.indexOf(track.id);
-      const pos = positionHandler(currentTrackPosition);
-      const tackIdToPlay = trackIds[pos];
+      const currentPosition = positionData.current;
+      const tackIdToPlay = trackIds[currentPosition];
 
       tackIdToPlay && playTrack(tackIdToPlay);
     }
+
+    return positionData;
+  }
+
+  getTrackPositionData(positionData) {
+    const { track, trackIds } = this.props;
+    const current = track && trackIds.indexOf(track.id);
+
+    return { ...positionData, current, trackIds };
   }
 
   render() {
     const { isPlaying, loading } = this.state;
-    const { track } = this.props;
+    const { track, trackIds } = this.props;
 
     return (
       <div className="music-player">
@@ -140,7 +154,13 @@ class MusicPlayer extends Component {
         <PlayerButton
           content={'《'}
           cssClass={PLAYER_BTN_CSS_CLASS}
-          handler={() => this.handleTrack(this.getPrevTrack)}
+          handler={() => {
+            fp.flow([
+              this.getTrackPositionData,
+              this.getPrevTrack,
+              this.changeTrack
+            ])({});
+          }}
         />
         <PlayerButton
           content={'►'}
@@ -167,13 +187,18 @@ class MusicPlayer extends Component {
         <PlayerButton
           content={'》'}
           cssClass={PLAYER_BTN_CSS_CLASS}
-          handler={() => this.handleTrack(this.getNextTrackPos)}
+          handler={() => {
+            fp.flow([
+              this.getTrackPositionData,
+              this.getNextTrack,
+              this.changeTrack
+            ])({});
+          }}
         />
       </div>
     );
   }
 }
-
 MusicPlayer.propType = {
   track: PropTypes.shape({
     title: PropTypes.string,
