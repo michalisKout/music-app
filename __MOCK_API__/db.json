@@ -17,43 +17,60 @@
     {
       "tracks": [
         {
-          "id": "1xVxk0hy9mklLKP2iqKvhF7e7zZPqBm0m",
+          "id": "1oY6skkl3weMvua4dft3BBoX6Nk0QeHi1",
           "title": "Flying High",
-          "cover_url": "http://placeimg.com/200/200/track"
+          "coverUrl": "http://placeimg.com/200/200/track"
         },
         {
           "id": "1xNCQ-rpE2kvdO2hTYK17U1lqvuTwrQ5F",
           "title": "Tropic Love",
-          "cover_url": "http://placeimg.com/200/200/track"
+          "coverUrl": "http://placeimg.com/200/200/track"
+        }
+      ],
+      "id": "4",
+      "title": "Heavy Light",
+      "coverUrl": "http://placeimg.com/200/200/music"
+    },
+    {
+      "tracks": [
+        {
+          "id": "1oY6skkl3weMvua4dft3BBoX6Nk0QeHi1",
+          "title": "Flying High",
+          "coverUrl": "http://placeimg.com/200/200/track"
+        },
+        {
+          "id": "1xNCQ-rpE2kvdO2hTYK17U1lqvuTwrQ5F",
+          "title": "Tropic Love",
+          "coverUrl": "http://placeimg.com/200/200/track"
         }
       ],
       "id": "1",
       "title": "Heavy Light",
-      "cover_url": "http://placeimg.com/200/200/music"
+      "coverUrl": "http://placeimg.com/200/200/music"
     },
     {
       "tracks": [
         {
           "id": "1bylTpnEzZGNUTwcRrMlw55nG103TfbeP",
           "title": "We Know",
-          "cover_url": "http://placeimg.com/200/200/track"
+          "coverUrl": "http://placeimg.com/200/200/track"
         }
       ],
       "id": "2",
       "title": "Out of My Province",
-      "cover_url": "http://placeimg.com/200/200/music"
+      "coverUrl": "http://placeimg.com/200/200/music"
     },
     {
       "tracks": [
         {
           "id": "1xNCQ-rpE2kvdO2hTYK17U1lqvuTwrQ5F",
           "title": "Tropic Love",
-          "cover_url": "http://placeimg.com/200/200/track"
+          "coverUrl": "http://placeimg.com/200/200/track"
         }
       ],
       "id": "3",
       "title": "Superstar",
-      "cover_url": "http://placeimg.com/200/200/music"
+      "coverUrl": "http://placeimg.com/200/200/music"
     }
   ]
 }

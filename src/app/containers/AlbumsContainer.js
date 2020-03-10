@@ -1,13 +1,38 @@
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Albums from '../components/Albums';
+import { DATA_TYPES } from '../utils/config';
+import { updateAlbums } from '../actions';
+import { getAPINormalizedData, album } from '../service/dataMapperApi';
+import { albumsSelector, albumsIdsSelector } from '../selectors';
+import { isEqual } from 'lodash';
 
-//we should add a class container to handle api side effects
+class AlbumsContainer extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    getAPINormalizedData(DATA_TYPES.ALBUMS, album).then(data => {
+      const shouldUpdateAlbums = !isEqual(data, this.props.albums);
+      if (shouldUpdateAlbums) {
+        this.props.updateAlbums(data);
+      }
+    });
+  }
+
+  render() {
+    return <Albums {...this.props} />;
+  }
+}
 
 const mapStateToProps = (state = {}) => {
-  const albumIds = state.albums.ids || [];
+  const albums = albumsSelector(state);
+  const albumIds = albumsIdsSelector(state);
   return {
+    albums,
     albumIds
   };
 };
 
-export default connect(mapStateToProps)(Albums);
+export default connect(mapStateToProps, { updateAlbums })(AlbumsContainer);

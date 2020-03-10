@@ -1,12 +1,16 @@
 import { combineReducers } from 'redux';
-import { PLAY_TRACK } from '../actions/index';
+import { PLAY_TRACK, UPDATE_ALBUMS } from '../actions/index';
 import {
   defaultAlbums,
   defaultTracks,
   defaultArtists
 } from '../utils/defaultStoreMapper';
 
-const albums = (albums = defaultAlbums) => {
+const albums = (albums = defaultAlbums, action) => {
+  if (action.type === UPDATE_ALBUMS) {
+    const updatedAlbums = action.payload.albums;
+    return { ...albums, ...updatedAlbums };
+  }
   return albums;
 };
 
