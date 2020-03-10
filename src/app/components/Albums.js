@@ -16,4 +16,4 @@ Albums.propTypes = {
   albumIds: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
-export default Albums;
+export default React.memo(Albums);

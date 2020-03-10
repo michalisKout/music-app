@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { isEqual, debounce, throttle } from 'lodash';
 import PlayerButton from './PlayerButton';
@@ -18,7 +18,7 @@ import fp from 'lodash/fp';
 
 const PLAYER_BTN_CSS_CLASS = 'music-player__button';
 
-class MusicPlayer extends Component {
+class MusicPlayer extends PureComponent {
   constructor(props) {
     super(props);
     this.musicPlayer = null;
@@ -208,4 +208,4 @@ MusicPlayer.propType = {
   playTrack: PropTypes.func.isRequired
 };
 
-export default React.memo(MusicPlayer);
+export default MusicPlayer;

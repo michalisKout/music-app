@@ -26,4 +26,4 @@ AlbumLink.propTypes = {
   })
 };
 
-export default AlbumLink;
+export default React.memo(AlbumLink);
