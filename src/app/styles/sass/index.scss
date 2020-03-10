@@ -12,10 +12,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 progress {
   margin-top: auto;
   margin-bottom: auto;
 }
+
+.hover-effect {
+  transition: 0.5s all;
+  opacity: 0.5;
+}
+
 .track-list {
   margin-top: 2em;
   display: flex;
@@ -30,8 +37,9 @@ progress {
 
     &:hover {
       img {
-        opacity: 0.5;
+        @extend .hover-effect;
       }
+
       z-index: 1;
       background-image: url('../images/play-icon.png');
       background-size: contain;
@@ -54,6 +62,13 @@ progress {
     border-bottom: 2px solid $blue;
     width: 50%;
     margin: auto;
+
+    img {
+      opacity: 1;
+      &:hover {
+        @extend .hover-effect;
+      }
+    }
   }
 }
 .music-app {
@@ -78,6 +93,12 @@ ul {
         color: black;
       }
 
+      &:hover {
+        img {
+          @extend .hover-effect;
+        }
+      }
+
       & > h3 {
         text-align: center;
       }
@@ -96,6 +117,7 @@ ul {
   &__song-title {
     color: #fff;
     padding: 1em;
+    cursor: default;
   }
 
   &__button {
