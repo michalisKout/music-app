@@ -3,13 +3,18 @@ import PropTypes from 'prop-types';
 import { isEqual, debounce, throttle } from 'lodash';
 import PlayerButton from './PlayerButton';
 import SongTitle from './SongTitle';
-import { escapeGoogleAuthUrl, shouldActivate } from '../../utils/helpers';
+import {
+  escapeGoogleAuthUrl,
+  shouldActivate,
+  getMusicPlayerAlertMessage
+} from '../../utils/helpers';
+import {
+  DEBOUNCE_TIME,
+  THROTTLE_TIME,
+  debouchConfig,
+  UPDATE_TIME_EVENT
+} from '../../utils/config';
 
-const UPDATE_TIME_EVENT = 'timeupdate';
-const DEBOUNCE_TIME = 500;
-const THROTTLE_TIME = 100;
-const debouchConfig = { maxWait: 1500 };
-const ALERT_MSG = 'Music Player is still loading the track...';
 const PLAYER_BTN_CSS_CLASS = 'music-player__button';
 
 class MusicPlayer extends Component {
@@ -24,7 +29,8 @@ class MusicPlayer extends Component {
     this.getNextTrackPos = this.getNextTrackPos.bind(this);
 
     this.state = {
-      isPlaying: false
+      isPlaying: false,
+      loading: false
     };
   }
 
@@ -42,6 +48,14 @@ class MusicPlayer extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.musicPlayer &&
+      this.musicPlayer.removeEventListener(
+        UPDATE_TIME_EVENT,
+        debounce(this.calculateProgress, DEBOUNCE_TIME, debouchConfig)
+      );
+  }
+
   updateProgressBar(currentProgress) {
     if (currentProgress) {
       this.progressBar.value = currentProgress;
@@ -55,18 +69,25 @@ class MusicPlayer extends Component {
   }
 
   interactWithAudioSafely(isPlaying = false) {
+    const { track } = this.props;
     const playPromise = this.musicPlayer.play();
 
     if (playPromise !== undefined) {
+      this.setState(prevState => ({ ...prevState, loading: true }));
+
       playPromise
         .then(_ => {
-          this.setState({ isPlaying });
+          this.setState(prevState => ({
+            ...prevState,
+            loading: false,
+            isPlaying
+          }));
           if (!isPlaying) {
             this.musicPlayer.pause();
           }
         })
         .catch(_ => {
-          alert(ALERT_MSG);
+          alert(getMusicPlayerAlertMessage(this.musicPlayer, track));
         });
     }
   }
@@ -113,7 +134,7 @@ class MusicPlayer extends Component {
   }
 
   render() {
-    const { isPlaying } = this.state;
+    const { isPlaying, loading } = this.state;
     const { track } = this.props;
 
     return (
@@ -140,7 +161,11 @@ class MusicPlayer extends Component {
           cssClass={`${PLAYER_BTN_CSS_CLASS} ${shouldActivate(!isPlaying)}`}
           handler={throttle(this.handleAudio, THROTTLE_TIME)}
         />
-        <SongTitle track={track} cssClass={'music-player__song-title'} />
+        <SongTitle
+          track={track}
+          cssClass={'music-player__song-title'}
+          loading={loading}
+        />
         <progress
           ref={el => {
             this.progressBar = el;
