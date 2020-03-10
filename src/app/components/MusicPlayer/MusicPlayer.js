@@ -82,9 +82,7 @@ class MusicPlayer extends Component {
             loading: false,
             isPlaying
           }));
-          if (!isPlaying) {
-            this.musicPlayer.pause();
-          }
+          !isPlaying && this.musicPlayer.pause();
         })
         .catch(_ => {
           alert(getMusicPlayerAlertMessage(this.musicPlayer, track));
@@ -105,22 +103,18 @@ class MusicPlayer extends Component {
   getPrevTrack() {
     const { track, trackIds } = this.props;
     const currentTrackPosition = trackIds.indexOf(track.id);
-    if (currentTrackPosition === 0) {
-      return trackIds.length - 1;
-    } else {
-      return currentTrackPosition - 1;
-    }
+    return currentTrackPosition === 0
+      ? trackIds.length - 1
+      : currentTrackPosition - 1;
   }
 
   getNextTrackPos() {
     const { track, trackIds } = this.props;
     const currentTrackPosition = trackIds.indexOf(track.id);
 
-    if (currentTrackPosition - 1 === trackIds.length) {
-      return 0;
-    } else {
-      return currentTrackPosition + 1;
-    }
+    return currentTrackPosition - 1 === trackIds.length
+      ? 0
+      : currentTrackPosition + 1;
   }
 
   handleTrack(positionHandler) {
