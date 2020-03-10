@@ -111,7 +111,7 @@ class MusicPlayer extends Component {
   getNextTrackPos() {
     const { track, trackIds } = this.props;
     const currentTrackPosition = trackIds.indexOf(track.id);
-    console.log(currentTrackPosition, trackIds.length);
+
     return currentTrackPosition === trackIds.length - 1
       ? 0
       : currentTrackPosition + 1;
