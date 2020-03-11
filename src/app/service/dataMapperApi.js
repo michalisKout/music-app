@@ -30,7 +30,7 @@ export const getAPINormalizedTracks = async () => {
       ids: Object.keys(normalizedAlbums.result)
     };
   } catch (e) {
-    throw new Error(e);
+    console.log(e);
   }
 };
 
@@ -43,6 +43,6 @@ export const getAPINormalizedData = async (dataType, entity) => {
       ids: normalizedData.result
     };
   } catch (e) {
-    throw new Error(e);
+    console.log(e);
   }
 };
