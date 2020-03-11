@@ -75,32 +75,35 @@ progress {
   text-align: center;
 }
 
-ul {
-  display: flex;
-  justify-content: space-evenly;
-  width: 50%;
-  margin: auto;
-  padding-inline-start: 0;
-
-  & > li {
-    list-style: none;
-    & > a {
-      padding: 1em;
-      border: 2px solid $blue;
-      text-decoration: none;
-      display: block;
-      &:visited {
-        color: black;
-      }
-
-      &:hover {
-        img {
-          @extend .hover-effect;
+.music-app__container {
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    margin: auto;
+    padding-inline-start: 0;
+    flex-flow: wrap;
+    margin-bottom: 10em;
+    & > li {
+      list-style: none;
+      & > a {
+        padding: 1em;
+        border: 2px solid $blue;
+        text-decoration: none;
+        display: block;
+        &:visited {
+          color: black;
         }
-      }
 
-      & > h3 {
-        text-align: center;
+        &:hover {
+          img {
+            @extend .hover-effect;
+          }
+        }
+
+        & > h3 {
+          text-align: center;
+        }
       }
     }
   }
