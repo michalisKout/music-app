@@ -14,8 +14,16 @@ function createWrite() {
 }
 
 class orfiumSupportCRM {
+  constructor() {
+    this.toolList = Object.keys(CRM_TOOLS);  
+  }
+  
+  static logAvailableTools() {
+    console.log(this.toolList);
+  }
+  
   static applyTool(toolName) {
-    const toolExistsInList = Object.keys(CRM_TOOLS).some(name => name === toolName);
+    const toolExistsInList = this.toolList.some(name => name === toolName);
     const crmTool = CRM_TOOLS[toolName];
     
     if(!toolExistsInList) {
