@@ -9,7 +9,7 @@ const writerTemplate = ({name, surname, id}) => `<div id='${id}' class="writer">
         <h1>${name}</h1>
         <h1>${surname}</h1>
         <h1>${id}</h1>
-        <button onclick="removeWriter(this)"></button>
+        <button onclick="removeWriter(this)">Delete Writer</button>
 </div>`;
   
   
@@ -25,7 +25,7 @@ function removeWriter(element) {
   document.getElementById(element.parentElement.id).remove();
 }
 
-class orfiumSupportCRM {
+class OrfiumSupportCRM {
  
   static logAvailableTools() {
     console.log(Object.keys(CRM_TOOLS));
@@ -43,7 +43,7 @@ class orfiumSupportCRM {
   }
 }
 
-Object.defineProperty(window, 'orfiumSupportCRM', {
-    value: orfiumSupportCRM,
+Object.defineProperty(window, 'OrfiumSupportCRM', {
+    value: OrfiumSupportCRM,
     writable: false
 });
