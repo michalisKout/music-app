@@ -9,7 +9,7 @@ const writerTemplate = ({name, surname, id}) => `<div id='${id}' class="writer">
         <h1>${name}</h1>
         <h1>${surname}</h1>
         <h1>${id}</h1>
-        <button onclick="removeWriter(${id})"></button>
+        <button onclick="removeWriter()"></button>
 </div>`;
   
   
@@ -21,8 +21,8 @@ function createWriter(containerId = 'writers-container', writer) {
   document.getElementById(containerId).insertAdjacentHTML('afterbegin', writerTemplate(writer));
 }
 
-function removeWriter(elementId) {
-  document.getElementById(elementId).remove();
+function removeWriter({ id }) {
+  document.getElementById(id).remove();
 }
 
 class orfiumSupportCRM {
