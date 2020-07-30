@@ -5,10 +5,11 @@ const CRM_TOOLS = {
   'createWrite': (writer) => createWriter(writer),
 }
 
-const writerTemplate = ({name, surname, id}) => `<div class="writer">
+const writerTemplate = ({name, surname, id}) => `<div id='${id}' class="writer">
         <h1>${name}</h1>
         <h1>${surname}</h1>
         <h1>${id}</h1>
+        <button onclick="removeWriter(${id})"></button>
 </div>`;
   
   
@@ -16,8 +17,12 @@ function leadTool() {
    console.log('lead tooolings');  
 }
 
-function createWriter(writer) {
-  document.getElementById('writers-container').insertAdjacentHTML('afterbegin', writerTemplate(writer));
+function createWriter(containerId = 'writers-container', writer) {
+  document.getElementById(containerId).insertAdjacentHTML('afterbegin', writerTemplate(writer));
+}
+
+function removeWriter(elementId) {
+  document.getElementById(elementId).remove();
 }
 
 class orfiumSupportCRM {
