@@ -9,7 +9,7 @@ const writerTemplate = ({name, surname, id}) => `<div id='${id}' class="writer">
         <h1>${name}</h1>
         <h1>${surname}</h1>
         <h1>${id}</h1>
-        <button onclick="removeWriter()"></button>
+        <button onclick="removeWriter(this)"></button>
 </div>`;
   
   
