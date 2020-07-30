@@ -21,8 +21,8 @@ function createWriter(containerId = 'writers-container', writer) {
   document.getElementById(containerId).insertAdjacentHTML('afterbegin', writerTemplate(writer));
 }
 
-function removeWriter({ id }) {
-  document.getElementById(id).remove();
+function removeWriter(element) {
+  document.getElementById(element.id).remove();
 }
 
 class orfiumSupportCRM {
