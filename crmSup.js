@@ -1,3 +1,5 @@
+console.log('CRM TOOL INITIALIAZE');
+
 const CRM_TOOLS = {
   'lead': () => leadTool(),
   'createWrite': () => createWrite(),
