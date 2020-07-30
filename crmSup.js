@@ -25,9 +25,7 @@ class orfiumSupportCRM {
   }
 }
 
-((windowObject) => {
- windowObject && Object.defineProperty(windowObject, 'orfiumSupportCRM', {
+Object.defineProperty(window, 'orfiumSupportCRM', {
     value: orfiumSupportCRM,
     writable: false
-  });
-}, window);
+});
