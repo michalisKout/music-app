@@ -22,7 +22,7 @@ function createWriter(containerId = 'writers-container', writer) {
 }
 
 function removeWriter(element) {
-  document.getElementById(element.id).remove();
+  document.getElementById(element.parentElement.id).remove();
 }
 
 class orfiumSupportCRM {
