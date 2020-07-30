@@ -2,7 +2,7 @@ console.log('CRM TOOL INITIALIAZE');
 
 const CRM_TOOLS = {
   'lead': () => leadTool(),
-  'createWrite': (writer) => createWriter(writer),
+  'createWrite': (containerId, writer) => createWriter(containerId, writer),
 }
 
 const writerTemplate = ({name, surname, id}) => `<div id='${id}' class="writer">
