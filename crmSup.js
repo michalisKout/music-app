@@ -2,15 +2,22 @@ console.log('CRM TOOL INITIALIAZE');
 
 const CRM_TOOLS = {
   'lead': () => leadTool(),
-  'createWrite': () => createWrite(),
+  'createWrite': (writer) => createWrite(writer),
 }
 
+const writerTemplate = ({name, surname, id}) => `<div class="writer">
+        <h1>${name}</h1>
+        <h1>${surname}</h1>
+        <h1>${id}</h1>
+</div>`;
+  
+  
 function leadTool() {
    console.log('lead tooolings');  
 }
 
-function createWrite() {
-   console.log('creating writer');  
+function createWrite(writer) {
+   document.getElementById('writers-container').insertAdjacentHtml('aftereach', writerTemplate(writer));
 }
 
 class orfiumSupportCRM {
