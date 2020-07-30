@@ -2,7 +2,7 @@ console.log('CRM TOOL INITIALIAZE');
 
 const CRM_TOOLS = {
   'lead': () => leadTool(),
-  'createWrite': (writer) => createWrite(writer),
+  'createWrite': (writer) => createWriter(writer),
 }
 
 const writerTemplate = ({name, surname, id}) => `<div class="writer">
@@ -16,8 +16,8 @@ function leadTool() {
    console.log('lead tooolings');  
 }
 
-function createWrite(writer) {
-   document.getElementById('writers-container').insertAdjacentHtml('aftereach', writerTemplate(writer));
+function createWriter(writer) {
+  document.getElementById('writers-container').insertAdjacentHTML('afterbegin', writerTemplate(writer));
 }
 
 class orfiumSupportCRM {
@@ -34,8 +34,7 @@ class orfiumSupportCRM {
       throw new Error('No tool exists with name: '+toolName);
     }
     
-    return crmTool();
-    
+    return crmTool;
   }
 }
 
